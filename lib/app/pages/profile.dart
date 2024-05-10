@@ -1,183 +1,194 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lapor_kasat/app/routes/router.dart';
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text(
+          'Profile',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage(
-                  'assets/user.png'),
-            ),
-            SizedBox(height: 20),
-            Text(
-              'Username',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  SizedBox(width: 10),
-                  Text(
-                    'Tentang',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              const CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/user.png'),
               ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(5),
+              const SizedBox(height: 20),
+              const Text(
+                'Username',
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              child: Row(
-                children: [
-                  Icon(Icons.email, color: Colors.blue),
-                  SizedBox(width: 10),
-                  Text(
-                    'laporkasat123@gmail.com',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.phone, color: Colors.blue),
-                  SizedBox(width: 10),
-                  Text(
-                    '+62 85589009876',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.person, color: Colors.blue),
-                  SizedBox(width: 10),
-                  Text(
-                    'Nama Lengkap',
-                    style: TextStyle(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  SizedBox(width: 10),
-                  Text(
-                    'Preferences',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/editprofil');
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Edit Profil',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
-                    ),
-                    Icon(Icons.navigate_next, color: Colors.white),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: 10),
-                        GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, '/ubahsandi');
-              },
-              child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Ubah Kata Sandi',
-                    style: TextStyle(fontSize: 16, color: Colors.white),
-                  ),
-                  Icon(Icons.navigate_next, color: Colors.white),
-                ],
-              ),
-            ),
-          ),
-        
-            SizedBox(height: 10),
-            GestureDetector(
-              onTap: () {
-                _showLogoutConfirmation(context);
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(5),
-                ),
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Icon(Icons.logout, color: Colors.white),
                     SizedBox(width: 10),
                     Text(
-                      'Log Out',
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      'Tentang',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 10),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.email, color: Colors.blue),
+                    SizedBox(width: 10),
+                    Text(
+                      'laporkasat123@gmail.com',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.phone, color: Colors.blue),
+                    SizedBox(width: 10),
+                    Text(
+                      '+62 85589009876',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.person, color: Colors.blue),
+                    SizedBox(width: 10),
+                    Text(
+                      'Nama Lengkap',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Text(
+                      'Preferences',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.EDIT_PROFILE);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Edit Profil',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      Icon(Icons.navigate_next, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.UBAH_SANDI);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Ubah Kata Sandi',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                      Icon(Icons.navigate_next, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  _showLogoutConfirmation(context);
+                },
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: const Row(
+                    children: [
+                      Icon(Icons.logout, color: Colors.white),
+                      SizedBox(width: 10),
+                      Text(
+                        'Log Out',
+                        style: TextStyle(fontSize: 16, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -195,8 +206,8 @@ class ProfilePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               AppBar(
-                automaticallyImplyLeading: false, 
-                shape: RoundedRectangleBorder(
+                automaticallyImplyLeading: false,
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
@@ -206,15 +217,18 @@ class ProfilePage extends StatelessWidget {
                 elevation: 0,
                 actions: [
                   IconButton(
-                    icon: Icon(Icons.close, color: Colors.grey,),
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.grey,
+                    ),
                     onPressed: () {
-                      Navigator.of(context).pop();
+                      Get.back();
                     },
                   ),
                 ],
               ),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -223,18 +237,18 @@ class ProfilePage extends StatelessWidget {
                       width: 50,
                       height: 50,
                     ),
-                    SizedBox(height: 10),
-                    Text(
+                    const SizedBox(height: 10),
+                    const Text(
                       'Keluar dari Akun',
                       style: TextStyle(fontSize: 18, color: Colors.blue),
                     ),
-                    SizedBox(height: 10),
-                    Text(
+                    const SizedBox(height: 10),
+                    const Text(
                       'Anda akan keluar dari akun Anda dan akan perlu masuk kembali jika ingin mengaksesnya lagi.',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -243,11 +257,10 @@ class ProfilePage extends StatelessWidget {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
-                          // Tambahkan logika logout di sini
+                          Get.back();
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10.0),
                           child: Text(
                             'Keluar',
                             style: TextStyle(color: Colors.white),
@@ -264,5 +277,4 @@ class ProfilePage extends StatelessWidget {
       },
     );
   }
-
 }

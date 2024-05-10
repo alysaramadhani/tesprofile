@@ -1,61 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lapor_kasat/app/pages/editprofile.dart';
 import 'package:lapor_kasat/app/pages/profile.dart';
-import 'package:lapor_kasat/app/pages/ubahsandi.dart';
+import 'package:lapor_kasat/app/routes/router.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MainPage(),
-      routes: {
-       '/profil': (context) =>
-            ProfilePage(), 
-        '/editprofil': (context) =>
-            EditProfilePage(), 
-        '/ubahsandi': (context) =>
-            UbahSandiPage(), 
-      },
+    return GetMaterialApp(
+      initialRoute: Routes.MAIN,
+      getPages: router,
     );
   }
 }
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
+    List<Widget> page = [
+      const Center(child: Text('Home')),
+      const Center(child: Text('Bookmark')),
+      const ProfilePage(),
+    ];
+
+    void onItemTapped(int index) {
+      setState(() {
+        selectedIndex = index;
+      });
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Main Page'),
-      ),
-      body: Center(
-        child: Text('Main Content'),
-      ),
+      body: page[selectedIndex],
       bottomNavigationBar: BottomAppBar(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.home),
+              icon: const Icon(Icons.home),
               onPressed: () {
-                // Action when Home icon is pressed
+                onItemTapped(0);
               },
             ),
             IconButton(
-              icon: Icon(Icons.bookmark),
+              icon: const Icon(Icons.bookmark),
               onPressed: () {
-                // Action when Bookmarks icon is pressed
+                onItemTapped(1);
               },
             ),
             IconButton(
-              icon: Icon(Icons.person),
+              icon: const Icon(Icons.person),
               onPressed: () {
-                Navigator.pushNamed(context,
-                    '/profil'); 
+                setState(() {
+                  selectedIndex = 2;
+                });
               },
             ),
           ],
