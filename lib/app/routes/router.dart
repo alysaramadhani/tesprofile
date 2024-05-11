@@ -2,10 +2,10 @@
 
 import 'package:get/get.dart';
 import 'package:lapor_kasat/app/pages/editprofile.dart';
+import 'package:lapor_kasat/app/pages/main_page.dart';
 import 'package:lapor_kasat/app/pages/profile.dart';
 import 'package:lapor_kasat/app/pages/splash_screen.dart';
 import 'package:lapor_kasat/app/pages/ubahsandi.dart';
-import 'package:lapor_kasat/main.dart';
 
 class Routes {
   static const SPLASH = '/';
@@ -15,25 +15,31 @@ class Routes {
   static const MAIN = '/main';
 }
 
-final router = [
-  GetPage(
-    name: Routes.MAIN,
-    page: () => const MainPage(),
-  ),
-  GetPage(
-    name: Routes.SPLASH,
-    page: () => const SplashScreen(),
-  ),
-  GetPage(
-    name: Routes.PROFILE,
-    page: () => const ProfilePage(),
-  ),
-  GetPage(
-    name: Routes.EDIT_PROFILE,
-    page: () => const EditProfilePage(),
-  ),
-  GetPage(
-    name: Routes.UBAH_SANDI,
-    page: () => const UbahSandiPage(),
-  ),
-];
+class AppPage {
+  AppPage._();
+
+  static const INITIAL = Routes.MAIN;
+
+  static final router = [
+    GetPage(
+      name: Routes.MAIN,
+      page: () => const MainPage(),
+    ),
+    GetPage(
+      name: Routes.SPLASH,
+      page: () => const SplashScreen(),
+    ),
+    GetPage(
+      name: Routes.PROFILE,
+      page: () => const ProfilePage(),
+    ),
+    GetPage(
+      name: Routes.EDIT_PROFILE,
+      page: () => const EditProfilePage(),
+    ),
+    GetPage(
+      name: Routes.UBAH_SANDI,
+      page: () => const UbahSandiPage(),
+    ),
+  ];
+}

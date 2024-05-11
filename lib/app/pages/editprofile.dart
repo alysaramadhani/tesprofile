@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lapor_kasat/app/controllers/edit_profile_controller.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends GetView<EditProfileController> {
   const EditProfilePage({super.key});
 
   @override

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lapor_kasat/app/controllers/profile_controller.dart';
 import 'package:lapor_kasat/app/routes/router.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends GetView<ProfilController> {
   const ProfilePage({super.key});
 
   @override

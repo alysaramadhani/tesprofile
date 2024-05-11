@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lapor_kasat/app/controllers/ubah_sandi_controller.dart';
 
-class UbahSandiPage extends StatelessWidget {
+class UbahSandiPage extends GetView<UbahSandiController> {
   const UbahSandiPage({super.key});
 
   @override
